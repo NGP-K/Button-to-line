@@ -6,16 +6,24 @@
 </head>
 <body>
 
-<h2>ทดสอบส่งข้อความเข้าไลน์</h2>
+<h2>ทดสอบส่งข้อความเข้า LINE</h2>
 
 <button onclick="sendLine()">กดส่งเข้าไลน์</button>
 
 <script>
 function sendLine() {
   fetch("http://localhost:3000/send")
-    .then(res => res.text())
-    .then(data => alert(data))
-    .catch(err => alert("error"));
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === "success") {
+        alert("ส่งเข้า LINE สำเร็จ 🎉");
+      } else {
+        alert("เกิดข้อผิดพลาด");
+      }
+    })
+    .catch(error => {
+      alert("เชื่อมต่อเซิร์ฟเวอร์ไม่ได้");
+    });
 }
 </script>
 
