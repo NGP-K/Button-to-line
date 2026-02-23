@@ -2,9 +2,22 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>My Button</title>
+  <title>ส่งเข้าไลน์</title>
 </head>
 <body>
-  <button onclick="alert('สวัสดี!')">กดเลย</button>
+
+<h2>ทดสอบส่งข้อความเข้าไลน์</h2>
+
+<button onclick="sendLine()">กดส่งเข้าไลน์</button>
+
+<script>
+function sendLine() {
+  fetch("http://localhost:3000/send")
+    .then(res => res.text())
+    .then(data => alert(data))
+    .catch(err => alert("error"));
+}
+</script>
+
 </body>
 </html>
